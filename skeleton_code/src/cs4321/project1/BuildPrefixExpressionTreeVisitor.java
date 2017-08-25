@@ -6,7 +6,7 @@ import cs4321.project1.tree.*;
 /**
  * Provide a comment about what your class does and the overall logic
  * 
- * @author Rong Tan
+ * @author Rong Tan (rt389) Akhil Gopu (akg68)
  */
 public class BuildPrefixExpressionTreeVisitor implements TreeVisitor {
 
