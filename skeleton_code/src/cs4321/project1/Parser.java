@@ -12,7 +12,7 @@ import cs4321.project1.tree.*;
  * parentheses (), a factor with a unary - before it, or a number.
  * 
  * @author Lucja Kot
- * @author Your names and netids go here
+ * @author Akhil Gopu (akg68) and Rong Tan (rt389)
  */
 public class Parser {
 
