@@ -6,7 +6,7 @@ import cs4321.project1.tree.SubtractionTreeNode;
 import cs4321.project1.tree.AdditionTreeNode;
 import cs4321.project1.tree.MultiplicationTreeNode;
 import cs4321.project1.tree.UnaryMinusTreeNode;
-
+import java.util.*;
 /**
  * Provide a comment about what your class does and the overall logic
  * 
@@ -14,49 +14,62 @@ import cs4321.project1.tree.UnaryMinusTreeNode;
  */
 
 public class EvaluateTreeVisitor implements TreeVisitor {
-	private int result;
-	private Stack aStack;
+	private Stack<Integer> aStack;
 	
 	public EvaluateTreeVisitor() {
-		result = 0;
 		aStack = new Stack();
 		// TODO fill me in
 	}
 
 	public double getResult() {
 		// TODO fill me in
-		return result; // so that skeleton code compiles
+		return aStack.peek(); // so that skeleton code compiles
 	}
 
 	@Override
 	public void visit(LeafTreeNode node) {
-		// TODO fill me in
+		aStack.push(node.getData());
 	}
 
 	@Override
 	public void visit(UnaryMinusTreeNode node) {
 		if (node.getChild() instanceof LeafTreeNode)
 			aStack.push(((LeafTreeNode)node.getChild()).getData() * -1.0);
-		// TODO fill me in
 	}
 
 	@Override
 	public void visit(AdditionTreeNode node) {
-		// TODO fill me in
+		node.getLeftChild.accept(this);
+		node.getRightChild.accept(this);
+		int tmp1 = aStack.pop();
+		int tmp2 = aStack.pop();
+		aStack.push(tmp1 + tmp2);
 	}
 
 	@Override
 	public void visit(MultiplicationTreeNode node) {
-		// TODO fill me in
+		node.getLeftChild.accept(this);
+		node.getRightChild.accept(this);
+		int tmp1 = aStack.pop();
+		int tmp2 = aStack.pop();
+		aStack.push(tmp1 * tmp2);
 	}
 
 	@Override
 	public void visit(SubtractionTreeNode node) {
-		// TODO fill me in
+		node.getLeftChild.accept(this);
+		node.getRightChild.accept(this);
+		int tmp1 = aStack.pop();
+		int tmp2 = aStack.pop();
+		aStack.push(tmp1 - tmp2);
 	}
 
 	@Override
 	public void visit(DivisionTreeNode node) {
-		// TODO fill me in
+		node.getLeftChild.accept(this);
+		node.getRightChild.accept(this);
+		int tmp1 = aStack.pop();
+		int tmp2 = aStack.pop();
+		aStack.push(tmp1 / tmp2);
 	}
 }
